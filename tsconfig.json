@@ -1,0 +1,41 @@
+{
+  "compilerOptions": {
+    /* ===== Target & Modules ===== */
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+
+    /* ===== Libs ===== */
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+
+    /* ===== Strictness ===== */
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "useUnknownInCatchVariables": true,
+
+    /* ===== Interop / DX ===== */
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    /* ===== Declarations ===== */
+    "declaration": true,
+    "declarationMap": false,
+    "emitDeclarationOnly": false,
+
+    /* ===== Output ===== */
+    "outDir": "dist",
+    "rootDir": "src",
+    "sourceMap": true,
+
+    /* ===== Quality ===== */
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+
+    /* ===== Misc ===== */
+    "resolveJsonModule": true
+  },
+
+  "include": ["src"],
+  "exclude": ["dist", "node_modules", "**/*.test.ts"]
+}

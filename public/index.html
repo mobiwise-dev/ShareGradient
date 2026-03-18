@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ShareGradient.js - Share and anime gradient between elements</title>
+    <meta name="description" content="ShareGradient.js is a lightweight, framework-agnostic engine for high-performance shared & animated gradients.">
+    <meta name="author" content="MobiWise-dev">
+    <meta name="keywords" content="ShareGradient.js, animated gradient, gradient animation, gradient engine, share gradient, anime gradient">
+    <meta property="og:title" content="ShareGradient.js - The Animated Gradient Engine">
+    <meta property="og:description" content="ShareGradient.js is a lightweight, framework-agnostic engine for high-performance shared & animated gradients.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sharegradient.mobiwise.dev">
+    <meta property="og:image" content="https://sharegradient.mobiwise.dev/sharegradient.png">
+    <meta name="robots" content="index, follow">
+    <link rel="stylesheet" href="style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <style>
+      .github-corner:hover .octo-arm {
+        animation: octocat-wave 560ms ease-in-out;
+      }
+      @keyframes octocat-wave {
+        0%,
+        100% {
+          transform: rotate(0);
+        }
+        20%,
+        60% {
+          transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+          transform: rotate(10deg);
+        }
+      }
+      .octo-arm, .octo-body{
+        fill:white;
+        background: var(--hero-gradient) fixed;
+      }      
+      #github-corner{
+        fill:none;
+        clip-path: shape(from 100% 100%,line to 56.67% 56.67%,curve to 56.4% 54.6% with 56.49% 56.4%/55.97% 55.03%,line to 61.08% 49.96%,curve to 63.08% 45.64% with 62.68% 48.36%/63.16% 46.76%,curve to 79.32% 45% with 67.32% 49%/72.76% 51.56%,curve to 82.16% 38.64% with 81.2% 43.12%/82.04% 40.96%,curve to 86.52% 33.96% with 82.76% 38.4%/85.08% 37.24%,curve to 80.04% 31.04% with 86.51% 33.94%/85.49% 32.08%,curve to 76.36% 26.16% with 79.08% 29.28%/77.8% 27.6%,curve to 71.52% 22.48% with 74.88% 24.72%/73.24% 23.44%,curve to 68.56% 16.04% with 70.44% 17%/68.56% 16.04%,curve to 63.88% 20.4% with 65.28% 17.44%/64.12% 19.76%,curve to 57.52% 23.2% with 61.6% 20.48%/59.4% 21.36%,curve to 56.88% 39.44% with 51% 29.76%/53.52% 35.2%,curve to 53.48% 40.64% with 55.96% 39.36%/54.76% 39.68%,line to 53.1% 41.01%,curve to 50.2% 34.92% with 51.51% 40.27%/49.3% 38.5%,curve to 49.36% 30.52% with 50.21% 34.88%/50.91% 32.34%,curve to 48.2% 31.44% with 49.36% 30.52%/47.68% 28.8%,curve to 47.6% 35.84% with 48.21% 31.46%/48.79% 33.1%,curve to 50.8% 43.25% with 47.6% 35.84%/45.65% 39.63%,line to 50.95% 43.15%,line to 47.92% 46.16%,curve to 46.02% 46.02% with 47.51% 46.57%/46.18% 46.12%,line to 0% 0%,hline to 100%,vline to 100%,close);
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">ShareGradient.js</div>
+      <nav>
+        <a href="#hero" class="active">Home</a>
+        <a href="#overview">Overview</a>
+        <a href="#api">API</a>
+        <a href="https://github.com/MobiWise-dev/sharegradient" target="_blank">GitHub</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section id="hero">
+      <div id="bento-grid">
+        <div id="bento-title" class="bento-frame">
+          <fit-text style="margin-top: -4rem">Share</fit-text>
+          <fit-text>Gradient.js</fit-text>
+          <p class="tagline">Bring your designs to life with smooth, <b>shared animated gradients</b></p>
+        </div>
+
+        <div id="bento-git" class="bento-card">
+          <a href="https://github.com/MobiWise-dev/sharegradient" class="github-corner" aria-label="View source on GitHub" target="_blank" rel="noreferrer">   
+            <svg id="github-corner" width="80" height="80" viewBox="0 0 250 250" style="fill: #151513; ; position: absolute; top: 0; border: 0; right: 0" aria-hidden="true">
+              <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z" />
+              <path
+                d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+                style="transform-origin: 130px 106px"
+                class="octo-arm"
+              />
+              <path
+                d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+                class="octo-body"
+              />
+            </svg>
+          </a>
+          <p>📦 Installation</p>
+          <pre><span class="token-kw">npm</span> install sharegradient</pre>
+        </div>
+
+        <div id="bento-desc" class="bento-card halftone-reveal" data-direction="center" data-spacing="20" data-duration="1.7" data-stagger="0.05">
+          <p>The lightweight, framework-agnostic engine for<br />high-performance shared & animated gradients.</p>
+        </div>
+
+        <div id="bento-light" class="bento-card">
+          <h2>🪶 Lightweight</h2>
+          <p>Small runtime footprint. Zero dependencies. Built around the Canvas API and CSS custom properties.</p>
+        </div>
+
+        <div id="bento-smooth" class="bento-card">
+          <h2>⚡️ Responsive</h2>
+          <p>One canvas source, one shared CSS variable, and adaptive updates for backgrounds, text, borders, and overlays.</p>
+        </div>
+
+        <div id="bento-framework" class="bento-card">
+          <h2>🧩 Framework Free</h2>
+          <p>Compatible with React, Vue, Svelte, or Vanilla. It just sets a CSS variable you use anywhere.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-container section-intro" id="overview">
+      <div class="section-heading">
+        <span class="eyebrow">Overview</span>
+        <h2>The hero sells the feeling. The rest explains the mechanism.</h2>
+        <p>ShareGradient generates a gradient once, injects it as a CSS variable, and lets you reuse that same visual layer across your interface. The result is a more consistent design system with less duplicated CSS.</p>
+      </div>
+
+      <div class="stat-strip">
+        <div class="stat-card">
+          <span class="stat-label">Output</span>
+          <strong>CSS variable</strong>
+          <p>Use the generated image anywhere `background` is accepted.</p>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Types</span>
+          <strong>Linear / Radial / Conic</strong>
+          <p>Switch the gradient shape without changing your integration pattern.</p>
+        </div>
+        <div class="stat-card">
+          <span class="stat-label">Motion</span>
+          <strong>Static / Swirl / Rotate</strong>
+          <p>Dial the amount of movement to match the component or the page.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-container" id="quick-start">
+      <div class="section-heading">
+        <span class="eyebrow">Quick Start</span>
+        <h2>Install, configure, start, reuse.</h2>
+        <p>The public API stays intentionally small: build a controller, start it, then consume the CSS variable wherever you need it.</p>
+      </div>
+
+      <div class="split-layout">
+        <article class="panel">
+          <div class="panel-header">
+            <span class="panel-kicker">Install</span>
+            <h3>Package</h3>
+          </div>
+          <pre><span class="token-kw">npm</span> install sharegradient</pre>
+          <p class="panel-note">The library is browser-focused and dependency-free at runtime.</p>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <span class="panel-kicker">Create one gradient</span>
+            <h3>Minimal setup</h3>
+          </div>
+          <pre><span class="token-kw">import</span> { createShareGradient } <span class="token-kw">from</span> <span class="token-str">"sharegradient"</span>;
+
+<span class="token-kw">const</span> heroGradient = <span class="token-fn">createShareGradient</span>()
+  .<span class="token-fn">setColors</span>([
+    <span class="token-str">"#7c3aed"</span>,
+    <span class="token-str">"#ec4899"</span>,
+    <span class="token-str">"#f59e0b"</span>
+  ])
+  .<span class="token-fn">setCssVariable</span>(<span class="token-str">"--hero-gradient"</span>)
+  .<span class="token-fn">setAnimationMode</span>(<span class="token-str">"swirl"</span>)
+  .<span class="token-fn">setResolution</span>(<span class="token-num">0.5</span>)
+  .<span class="token-fn">build</span>();
+
+heroGradient.<span class="token-fn">start</span>();</pre>
+        </article>
+      </div>
+
+      <div class="process-grid">
+        <article class="process-card">
+          <span class="process-step">01</span>
+          <h3>Render once internally</h3>
+          <p>The engine draws a gradient into a canvas and updates it at the rate you choose.</p>
+        </article>
+        <article class="process-card">
+          <span class="process-step">02</span>
+          <h3>Inject a CSS custom property</h3>
+          <p>The canvas snapshot becomes a `url(...)` stored in your target CSS variable.</p>
+        </article>
+        <article class="process-card">
+          <span class="process-step">03</span>
+          <h3>Reuse everywhere</h3>
+          <p>Backgrounds, text fills, borders, overlays, or animated offsets can all consume the same source.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-container" id="shared-demo">
+      <div class="section-heading">
+        <span class="eyebrow">Shared Usage</span>
+        <h2>One generated source, multiple visual roles.</h2>
+        <p>The point of the library is not just animation. It is reuse. A single gradient can become a page background, text treatment, border glow, and overlay tint without redefining the effect in every component.</p>
+      </div>
+
+      <div class="stack-layout">
+        <div class="bento-grid">
+          <div class="bento-card usage-bg span-2">
+            <span class="demo-chip">Full background</span>
+          </div>
+          <div class="bento-card">
+            <span class="usage-text">Aa</span>
+            <span class="demo-caption">Text clip</span>
+          </div>
+          <div class="bento-card usage-border">
+            <span class="inner-chip">Border effect</span>
+          </div>
+          <div class="bento-card usage-overlay">
+            <span class="demo-caption overlay-label">Overlay tint</span>
+          </div>
+          <div class="bento-card usage-anim span-2">
+            <span class="demo-chip demo-chip-dark">CSS motion on top</span>
+          </div>
+        </div>
+
+        <div class="split-layout split-layout-tight">
+          <article class="panel">
+            <div class="panel-header">
+              <span class="panel-kicker">JavaScript</span>
+              <h3>Create the shared source</h3>
+            </div>
+            <pre><span class="token-fn">createShareGradient</span>()
+  .<span class="token-fn">setColors</span>([
+    <span class="token-str">"#ff0f7b"</span>,
+    <span class="token-str">"#f89b29"</span>,
+    <span class="token-str">"#ff0f7b"</span>
+  ])
+  .<span class="token-fn">setCssVariable</span>(<span class="token-str">"--shared-grad"</span>)
+  .<span class="token-fn">setAnimationMode</span>(<span class="token-str">"swirl"</span>)
+  .<span class="token-fn">setFPS</span>(<span class="token-num">24</span>)
+  .<span class="token-fn">build</span>()
+  .<span class="token-fn">start</span>();</pre>
+          </article>
+
+          <article class="panel">
+            <div class="panel-header">
+              <span class="panel-kicker">CSS</span>
+              <h3>Consume it in multiple ways</h3>
+            </div>
+            <pre><span class="token-kw">.page</span> {
+  background: <span class="token-fn">var</span>(--shared-grad);
+}
+
+<span class="token-kw">.title</span> {
+  background: <span class="token-fn">var</span>(--shared-grad);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+<span class="token-kw">.card::before</span> {
+  background: <span class="token-fn">var</span>(--shared-grad);
+}</pre>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-container" id="examples">
+      <div class="section-heading">
+        <span class="eyebrow">Examples</span>
+        <h2>Shape and motion are independent knobs.</h2>
+        <p>Keep the same mental model while changing the gradient type or the animation behavior. This is where the library becomes useful beyond hero backgrounds.</p>
+      </div>
+
+      <div class="example-grid">
+        <article class="example-card">
+          <div class="example-head">
+            <span class="example-tag">Linear + Swirl</span>
+            <h3>Fluid hero and section backgrounds</h3>
+          </div>
+          <div class="preview-box linear-preview example-surface"></div>
+          <pre><span class="token-fn">createShareGradient</span>()
+  .<span class="token-fn">setGradientType</span>(<span class="token-str">"linear"</span>)
+  .<span class="token-fn">setAnimationMode</span>(<span class="token-str">"swirl"</span>)
+  .<span class="token-fn">setCssVariable</span>(<span class="token-str">"--demo-linear"</span>)</pre>
+        </article>
+
+        <article class="example-card">
+          <div class="example-head">
+            <span class="example-tag">Radial + Static</span>
+            <h3>Spotlights, glows, focus areas</h3>
+          </div>
+          <div class="preview-box radial-preview example-surface"></div>
+          <pre><span class="token-fn">createShareGradient</span>()
+  .<span class="token-fn">setGradientType</span>(<span class="token-str">"radial"</span>)
+  .<span class="token-fn">setOrigin</span>(<span class="token-num">0.35</span>, <span class="token-num">0.4</span>)
+  .<span class="token-fn">setAnimationMode</span>(<span class="token-str">"static"</span>)
+  .<span class="token-fn">setCssVariable</span>(<span class="token-str">"--demo-radial"</span>)</pre>
+        </article>
+
+        <article class="example-card">
+          <div class="example-head">
+            <span class="example-tag">Conic + Rotate</span>
+            <h3>Rings, loaders, rotating borders</h3>
+          </div>
+          <div class="preview-box conic-preview example-surface">
+            <div class="conic-circle"></div>
+          </div>
+          <pre><span class="token-fn">createShareGradient</span>()
+  .<span class="token-fn">setGradientType</span>(<span class="token-str">"conic"</span>)
+  .<span class="token-fn">setAnimationMode</span>(<span class="token-str">"rotate"</span>)
+  .<span class="token-fn">setRotationSpeed</span>(<span class="token-num">0.04</span>)
+  .<span class="token-fn">setCssVariable</span>(<span class="token-str">"--demo-conic"</span>)</pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-container" id="api">
+      <div class="section-heading">
+        <span class="eyebrow">API</span>
+        <h2>Small surface area, enough control for real use.</h2>
+        <p>The builder configures the output. The controller handles the lifecycle. Nothing more exotic than that.</p>
+      </div>
+
+      <div class="split-layout api-layout">
+        <article class="panel">
+          <div class="panel-header">
+            <span class="panel-kicker">Builder methods</span>
+            <h3>Configuration</h3>
+          </div>
+          <div class="api-table-wrap">
+            <table class="api-table">
+              <thead>
+                <tr>
+                  <th>Method</th>
+                  <th>Purpose</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>setColors()</code></td>
+                  <td>Define gradient stops</td>
+                </tr>
+                <tr>
+                  <td><code>setCssVariable()</code></td>
+                  <td>Choose the injected CSS variable</td>
+                </tr>
+                <tr>
+                  <td><code>setGradientType()</code></td>
+                  <td>Switch between linear, radial, and conic</td>
+                </tr>
+                <tr>
+                  <td><code>setAnimationMode()</code></td>
+                  <td>Use static, swirl, or rotate motion</td>
+                </tr>
+                <tr>
+                  <td><code>setAngle()</code></td>
+                  <td>Set the angle for linear or conic rendering</td>
+                </tr>
+                <tr>
+                  <td><code>setOrigin()</code></td>
+                  <td>Move the radial or conic center point</td>
+                </tr>
+                <tr>
+                  <td><code>setFPS()</code></td>
+                  <td>Throttle updates with a familiar control</td>
+                </tr>
+                <tr>
+                  <td><code>setResolution()</code></td>
+                  <td>Trade image sharpness against render cost</td>
+                </tr>
+                <tr>
+                  <td><code>setQuality()</code></td>
+                  <td>Control output image compression quality</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel">
+          <div class="panel-header">
+            <span class="panel-kicker">Controller methods</span>
+            <h3>Lifecycle</h3>
+          </div>
+          <div class="control-list">
+            <div class="control-item">
+              <code>start()</code>
+              <p>Initializes the engine, resizes the canvas, and begins the update loop.</p>
+            </div>
+            <div class="control-item">
+              <code>pause()</code>
+              <p>Stops animation frames while keeping the last generated background in place.</p>
+            </div>
+            <div class="control-item">
+              <code>resume()</code>
+              <p>Restarts a paused loop without rebuilding the full configuration.</p>
+            </div>
+            <div class="control-item">
+              <code>once()</code>
+              <p>Renders a single frame for static pages or one-shot visual generation.</p>
+            </div>
+            <div class="control-item">
+              <code>stop()</code>
+              <p>Stops the loop and clears the runtime listeners created by the controller.</p>
+            </div>
+          </div>
+
+          <pre><span class="token-kw">const</span> gradient = <span class="token-fn">createShareGradient</span>()
+  .<span class="token-fn">setColors</span>([<span class="token-str">"#111827"</span>, <span class="token-str">"#6366f1"</span>])
+  .<span class="token-fn">setCssVariable</span>(<span class="token-str">"--panel-grad"</span>)
+  .<span class="token-fn">build</span>();
+
+gradient.<span class="token-fn">start</span>();
+gradient.<span class="token-fn">pause</span>();
+gradient.<span class="token-fn">resume</span>();
+gradient.<span class="token-fn">stop</span>();</pre>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-container section-cta">
+      <div class="cta-panel">
+        <div>
+          <span class="eyebrow">Build With It</span>
+          <h2>Use the same gradient system across hero banners, product cards, text treatments, and experimental UI.</h2>
+          <p>ShareGradient is most useful when you want a single visual thread running through the whole interface instead of isolated CSS effects.</p>
+        </div>
+        <div class="cta-actions">
+          <a class="button-primary" href="https://github.com/MobiWise-dev/sharegradient" target="_blank" rel="noreferrer">View on GitHub</a>
+          <a class="button-secondary" href="#quick-start">Read the setup</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Copyright © 2026 ShareGradient.js | Made with ❤️ by <a href="https://mobiwise.dev">MobiWise</a></p>
+    </footer>
+
+    <script type="module">
+      import { createShareGradient } from "../dist/sharegradient.js";
+
+      // 1. Hero
+      createShareGradient()
+        .setAngle(45)
+        .setColors([
+          "oklch(0.514 0.1863 270.26)",
+          "oklch(0.6279 0.2002 330.35)",
+          "oklch(0.8719 0.1243 80.7)",
+          "oklch(0.514 0.1863 270.26)",
+          "oklch(0.6279 0.2002 330.35)",
+          "oklch(0.8719 0.1243 80.7)",
+          "oklch(0.514 0.1863 270.26)",
+          "oklch(0.6279 0.2002 330.35)",
+          "oklch(0.8719 0.1243 80.7)",
+        ])
+        .setCssVariable("--hero-gradient")
+        .setAnimationMode("swirl")
+        .setResolution(0.5)
+        .build()
+        .start();
+
+      // 2. Bento Shared
+      createShareGradient().setColors(["#ff0f7b", "#f89b29", "#ff0f7b"]).setCssVariable("--shared-grad").setAnimationMode("swirl").setResolution(0.5).build().start();
+
+      // 3. Demo Linear
+      createShareGradient()
+        .setColors(["#4f46e5", "#ec4899", "#f59e0b"])
+        .setCssVariable("--demo-linear")
+        .setGradientType("linear")
+        .setAnimationMode("swirl")
+        .setResolution(0.45)
+        .build()
+        .start();
+
+      // 4. Demo Radial
+      createShareGradient()
+        .setColors(["rgba(255,255,255,0.95)", "#8b5cf6", "#0f172a"])
+        .setCssVariable("--demo-radial")
+        .setGradientType("radial")
+        .setOrigin(0.35, 0.4)
+        .setAnimationMode("static")
+        .setResolution(0.55)
+        .build()
+        .start();
+
+      // 5. Demo Conic
+      const conic = createShareGradient().setColors(["cyan", "magenta", "yellow", "cyan"]).setCssVariable("--demo-conic").setGradientType("conic").setAnimationMode("rotate").setRotationSpeed(0.04).setResolution(0.5).build();
+
+      conic.start();
+
+      // Fit Text
+      class FitText extends HTMLElement {
+        constructor() {
+          super();
+          this.minSize = 16;
+          this.maxSize = 512;
+        }
+
+        connectedCallback() {
+          this.minSize = parseInt(this.getAttribute("min-size")) || 16;
+          this.maxSize = parseInt(this.getAttribute("max-size")) || 512;
+
+          this.style.display = "inline-block";
+          this.style.whiteSpace = "nowrap";
+
+          this.observer = new ResizeObserver(() => this.fit());
+          this.observer.observe(this.parentElement);
+
+          this.fit();
+        }
+
+        fit() {
+          const availableWidth = this.parentElement.clientWidth;
+
+          let size = this.maxSize;
+          this.style.fontSize = `${size}px`;
+
+          while (this.scrollWidth > availableWidth && size > this.minSize) {
+            size--;
+            this.style.fontSize = `${size}px`;
+          }
+
+          this.dispatchEvent(
+            new CustomEvent("fit", {
+              detail: { fontSize: size },
+            })
+          );
+        }
+
+        disconnectedCallback() {
+          this.observer?.disconnect();
+        }
+
+        refresh() {
+          this.fit();
+        }
+      }
+      customElements.define("fit-text", FitText);
+
+      // Halftone Reveal
+      class HalftoneReveal {
+        constructor(el) {
+          this.el = el;
+          this.id = "hft-" + crypto.randomUUID().slice(-8);
+
+          this.svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+          this.svg.setAttribute("width", 0);
+          this.svg.setAttribute("height", 0);
+          this.svg.style.position = "absolute";
+          this.el.appendChild(this.svg);
+
+          this.cp = document.createElementNS("http://www.w3.org/2000/svg", "clipPath");
+          this.cp.id = this.id;
+          this.svg.appendChild(this.cp);
+          this.el.style.clipPath = `url(#${this.id})`;
+
+          this.cfg = this.readCfg();
+          this.render();
+          this.observe();
+          this.debounceResize();
+        }
+
+        readCfg() {
+          const d = this.el.dataset;
+          return {
+            dir: d.direction || "center",
+            gap: +d.spacing || 20,
+            dur: +d.duration || 1.7,
+            stg: +d.stagger || 0.05,
+          };
+        }
+
+        delay(r, c, R, C) {
+          const { dir, stg } = this.cfg;
+          if (dir === "top") return r * stg;
+          if (dir === "bottom") return (R - 1 - r) * stg;
+          if (dir === "left") return c * stg;
+          if (dir === "right") return (C - 1 - c) * stg;
+          const cy = (R - 1) / 2,
+            cx = (C - 1) / 2;
+          return Math.hypot(r - cy, c - cx) * stg;
+        }
+
+        render() {
+          this.cp.innerHTML = "";
+          const { width: w, height: h } = this.el.getBoundingClientRect();
+          const { gap, dur } = this.cfg;
+          const C = Math.max(1, Math.floor(w / gap));
+          const R = Math.max(1, Math.floor(h / gap));
+          const sx = w / C,
+            sy = h / R,
+            r = Math.max(sx, sy);
+
+          for (let row = 0; row < R; row++) {
+            for (let col = 0; col < C; col++) {
+              const c = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+              c.setAttribute("cx", (col + 0.5) * sx);
+              c.setAttribute("cy", (row + 0.5) * sy);
+              c.innerHTML = `<animate attributeName="r" values="0;${r};0" dur="${dur * 2}s" begin="${this.delay(row, col, R, C)}s" repeatCount="indefinite"/>`;
+              this.cp.appendChild(c);
+            }
+          }
+        }
+
+        observe() {
+          new MutationObserver(() => {
+            this.cfg = this.readCfg();
+            this.render();
+          }).observe(this.el, { attributes: true, attributeFilter: ["data-direction", "data-spacing", "data-duration", "data-stagger"] });
+        }
+
+        debounceResize() {
+          let t;
+          addEventListener("resize", () => {
+            clearTimeout(t);
+            t = setTimeout(() => this.render(), 100);
+          });
+        }
+      }
+      
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".halftone-reveal").forEach((el) => new HalftoneReveal(el));
+      });
+
+      window.addHalftone = (parent, opts = {}) => {
+        const div = document.createElement("div");
+        div.className = "halftone-reveal";
+        Object.entries(opts).forEach(([k, v]) => (div.dataset[k] = v));
+        parent.appendChild(div);
+        return new HalftoneReveal(div);
+      };
+    </script>
+  </body>
+</html>
